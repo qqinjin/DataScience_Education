@@ -8,6 +8,11 @@ Yolo모델을 사용하여 신속하게 발화 순간을 탐지하여 실시간 
 ## Yolov5x
 ![yolo결과](https://github.com/qqinjin/DataScience_Education/assets/99711238/d92e3f5e-862a-4ce0-a441-7288095561cb)
 
+## CycleGan 아키텍처
+![사이클갠아키텍쳐](https://github.com/qqinjin/DataScience_Education/assets/99711238/2168b178-fb71-4bd9-a374-b0ce43b055ff)
+
+## CycleGan 결과
+![사이클갠결과사진](https://github.com/qqinjin/DataScience_Education/assets/99711238/339d2c10-0bf0-4bb7-b4d7-77f4078270cd)
 
 
 

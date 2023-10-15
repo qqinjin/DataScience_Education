@@ -1,0 +1,13 @@
+train: C:/Users/admin/Desktop/ultralytics-main/start_data/train/images
+val: C:/Users/admin/Desktop/ultralytics-main/start_data/valid/images
+test: C:/Users/admin/Desktop/ultralytics-main/start_data/test/images
+
+nc: 3
+names: ['fire', 'smoke', 'spark']
+
+roboflow:
+  workspace: dongeui-university
+  project: 3_5_01_02_merge
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/dongeui-university/3_5_01_02_merge/dataset/1

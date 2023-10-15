@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/progressbar.js@1.1.0/dist/progressbar.min.js"></script>
+
+    <title>AI 화재 종합 관리 센터</title>
+    <style>
+
+    button {
+    font-weight: bold; background-color: gray;
+    border: none; color: white;
+    padding: 10px 40px; text-align: center;
+    text-decoration: none;display: inline-block;
+    font-size: 20px; margin: 4px 1px;cursor: pointer;}
+
+    #call119 {
+        font-weight: bold; background-color: gray;
+        border: none; color: yellow;
+        padding: 10px 40px; text-align: center;
+        text-decoration: none;display: inline-block;
+        font-size: 20px;margin: 4px 2px;cursor: pointer;}
+
+    </style>  <!버튼색>
+    <style>
+    body {background-color: black; }
+        p {
+}
+ #fire-alert {
+    background-color: gray;
+    color: white;
+    font-size: 40px;
+    padding: -1px;
+
+    </style> <!배경화면>
+    <style>
+#clock {
+  position: absolute;
+  top: 70px;
+  left: 650px;
+  font-size: 50px;
+  color: #fff;
+} #time-box {
+    color: white;
+    position: absolute;
+    left: 800px; /* x축으로 100px 이동 */
+    top: 600px; /* y축으로 50px 이동 */
+    font-size: 34px; /* 글자 크기 20px로 조절 */
+  }
+</style> <!시간>
+    <style>.pie-chart {
+              position: relative;
+              display:inline-block;
+              left: 200px;
+              top: -30px;
+              width: 400px;
+              height: 400px;
+              border-radius: 50%;
+              transition: 0.3s;}
+        span.center{
+              background: #000;
+              display : block;
+              position: absolute;
+              top:50%; left:50%;
+              width:200px; height:200px;
+              border-radius: 50%;
+              text-align:center;
+              line-height: 190px;
+              font-size: 40px;
+               transform: translate(-50%, -50%);}
+               .pie-chart1 {
+  color: white;
+}
+</style> <!중앙 부분 원형그래프>
+    <style>
+    .temp-box {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+        border-radius: 5px;
+        width: 220px;
+        position: absolute;
+        top: 700px;
+        left: 20px;
+        font-size: 30px;
+        font-family: Gulim;
+    }.hub-box {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+        border-radius: 5px;
+        width: 220px;
+        position: absolute;
+        top: 700px;
+        left: 280px;
+        font-size: 30px;
+        font-family: Gulim;  }
+    .win-box {
+       background-color: #333;
+        color: #fff;
+        padding: 10px;
+        border-radius: 5px;
+        width: 220px;
+        position: absolute;
+        top: 700px;
+        left: 550px;
+        font-size: 30px;
+        font-family: Gulim;  }
+</style> <!온,습,풍 정보 박스>
+    <style>
+    .temp-box1 {
+        background-color: #000000;
+        color: #fff;
+        padding: 10px;
+        border-radius: 5px;
+        width: 20px;
+        position: absolute;
+        top: 600px;
+        left: 120px;
+        font-size: 5px;
+        font-family: Gulim;
+    }.hub-box1 {
+        background-color: #000000;
+        color: #fff;
+        padding: 10px;
+        border-radius: 5px;
+        width: 20px;
+        position: absolute;
+        top: 600px;
+        left: 380px;
+        font-size: 5px;
+        font-family: Gulim;  }
+    .win-box1 {
+       background-color: #000000;
+        color: #fff;
+        padding: 10px;
+        border-radius: 5px;
+        width: 50px;
+        position: absolute;
+        top: 600px;
+        left: 645px;
+        font-size: 5px;
+        font-family: Gulim;  }
+</style> <!게이지 정보 박스>
+    <style>
+  #dan-box {
+    color: white;
+    position: absolute;
+    left: 670px; /* x축으로 100px 이동 */
+    top: 250px; /* y축으로 50px 이동 */
+    font-size: 45px; /* 글자 크기 20px로 조절 */
+  }#message-box {
+    color: white;
+    position: absolute;
+    left: 670px; /* x축으로 100px 이동 */
+    top: 320px; /* y축으로 50px 이동 */
+    font-size: 35px; /* 글자 크기 20px로 조절 */
+  }
+</style> <!위험도>
+    <style>
+    #gauge1-wrapper {
+      width: 200px;
+      height: 200px;
+      position: relative;
+    }
+    #gauge1 {
+      position: absolute;
+      top: 0px;
+      left: 30px;
+    }
+    .line1 {
+			position: absolute;
+			top: 580px;
+			left: 140px;
+			width: 1px;
+			height: 22px;
+			background-color: black;
+			transform-origin: top left;
+			transform: rotate(0.00rad);
+		}
+  </style> <!1번 게이지>
+    <style>
+    #gauge2-wrapper {
+      width: 200px;
+      height: 200px;
+      position: relative;
+    }
+    #gauge2 {
+      position: absolute;
+      top: -200px;
+      left: 290px;
+    }
+    	.line2 {
+			position: absolute;
+			top: 582px;
+			left: 400px;
+			width: 1px;
+			height: 19px;
+			background-color: black;
+			transform-origin: top left;
+			transform: rotate(0.00rad);
+		}
+  </style> <!2번 게이지>
+    <style>
+    #gauge3-wrapper {
+      width: 200px;
+      height: 200px;
+      position: relative;
+    }
+    #gauge3 {
+      position: absolute;
+      top: -400px;
+      left: 560px;
+    }
+     .line {
+			position: absolute;
+			top: 582px;
+			left: 670px;
+			width: 1px;
+			height: 19px;
+			background-color: black;
+			transform-origin: top left;
+			transform: rotate(0.00rad);
+		}
+  </style> <!3번 게이지>
+
+
+</head>
+<body>
+    <div id="fire-alert">
+      &nbsp;&nbsp;<strong style="vertical-align: bottom;">AI 화재 종합 관리 센터</strong>
+    </div> <!제목 부분>
+    <p style="font-size: 50px; font-family: Arial; color: #fff; margin-top: 0px; margin-left: 10px;">디지털 스마트 부산 호</p>
+    <button id="cctv" onclick="cctv()" style="width: 235px; height: 50px;
+    position: absolute; left: 600px; top: 30px; transform: translate(-50%, -50%);">cctv 위치확인</button>
+    <button id="manul" onclick="manual()" style="width: 235px; height: 50px;
+    position: absolute; left: 1000px; top: 30px; transform: translate(-50%, -50%);">사용 메뉴얼</button>
+    <button id="danger" onclick="showAlert()" style="width: 235px; height: 50px;
+    position: absolute; left: 800px; top: 30px; transform: translate(-50%, -50%);">화재 위험도 분석</button>
+
+    <script>
+    function showAlert() {
+        alert("현재 화면입니다");
+    }
+    </script>
+    <script>
+    function cctv() {
+        alert("준비중");
+    }
+    </script>
+        <script>
+    function manual() {
+        alert("준비중");
+    }
+    </script>
+
+    <!사용 메뉴얼 버튼>
+    <div id="clock" style="color:white;">clock <script>
+    var Target = document.getElementById("clock");
+    function clock() {
+        var time = new Date();
+
+        var year = time.getFullYear();
+        var month = time.getMonth() + 1;
+        var date = time.getDate();
+        var hours = time.getHours();
+        var minutes = time.getMinutes();
+
+        // 월, 일, 시간, 분이 한 자리 숫자인 경우 앞에 0을 붙여줌
+        if (month < 10) month = "0" + month;
+        if (date < 10) date = "0" + date;
+        if (hours < 10) hours = "0" + hours;
+        if (minutes < 10) minutes = "0" + minutes;
+
+        Target.innerText = `${year}-${month}-${date}     ${hours}:${minutes}`;
+    }
+    clock();
+    setInterval(clock, 1000); // 1초마다 실행
+
+</script></div> <!시계>
+    <div class="pie-chart pie-chart1"><span class="center">{{ danger_rate }}%</span><script>$(window).ready(function(){
+   draw({{ danger_rate+1 }}, '.pie-chart1', 'red');});
+
+function draw(max, classname, colorname){
+   var i=1;
+    var func1 = setInterval(function(){
+      if(i<max){
+          color1(i,classname,colorname);
+          i++;
+      } else{
+        clearInterval(func1);
+      }
+    },10);
+}
+function color1(i, classname,colorname){
+   $(classname).css({
+        "background":"conic-gradient("+colorname+" 0% "+i+"%, #ffffff "+i+"% 100%)"
+   });
+}</script></div> <!중앙 원형그래프>
+   <div class="temp-box">
+
+    온도: {{ temperature }} &deg;C
+</div>                   <!온도 메시지 박스>
+   <div class="hub-box">
+     습도: {{ humidity }}%
+</div>                    <!습도 메시지 박스>
+   <div class="win-box">
+     풍속: {{ windpower }} m/s
+</div>                    <!바람 메시지 박스>
+   <div class="temp-box1">
+
+    0 &deg;C
+</div>                  <!온도 게이지 선>
+   <div class="hub-box1">
+     50%
+</div>                   <!습도 게이지 선>
+   <div class="win-box1">
+     10 m/s
+</div>                   <!바람 게이지 선>
+   <div id="time-box" style="color:white;">
+      최종 안전 점검일 : 2023-01-12<br>
+      최종 안전 점검일로부터  <span id="dayDiff"></span>일.
+  </div>          <!최종점검알람>
+   <script>
+    var pastDate = new Date('2023-01-12'); // 여기에 과거 날짜를 입력합니다.
+
+    var clockTarget = document.getElementById("clock");
+    var dayDiffTarget = document.getElementById("dayDiff");
+
+    function clock() {
+      var time = new Date();
+
+      var month = time.getMonth();
+      var date = time.getDate();
+      var day = time.getDay();
+      var week = ['일', '월', '화', '수', '목', '금', '토'];
+
+      var hours = time.getHours();
+      var minutes = time.getMinutes();
+      var seconds = time.getSeconds();
+
+      var currentTime = time.getTime(); // 현재 시간을 밀리초로 가져옵니다.
+      var pastTime = pastDate.getTime(); // 과거 시간을 밀리초로 가져옵니다.
+      var diffTime = currentTime - pastTime; // 현재 시간과 과거 시간의 차이를 계산합니다.
+      var diffDay = Math.floor(diffTime / (1000 * 60 * 60 * 24)); // 차이를 일수로 변환합니다.
+
+
+      dayDiffTarget.innerText = diffDay; // 일수 차이를 출력합니다.
+    }
+
+    clock();
+    setInterval(clock, 1000); // 1초마다 실행
+  </script>                                 <!날자 계산 스크립트>
+   <div id='dan-box' style='color:white;'>
+  {% if danger_rate <= 30 %}
+    화재 위험도 : 하
+  {% elif danger_rate <= 60 %}
+    화재 위험도 : 중
+  {% else %}
+    화재 위험도 : 상
+  {% endif %}
+</div>  <!화재 위험도 표현 부분>
+<div id="message-box" style="color:white;">
+   {% if danger_rate <= 30 %}
+   <span style="color:yellow">화재 발생 위험도가 낮은 날</span>
+   {% elif danger_rate <= 60 %}
+   <span style="color:yellow">화재 발생 위험도가 중간인 날</span>
+   {% else %}
+   <span style="color:yellow">화재 발생 위험도가 높은 날</span>
+   {% endif %}
+   <span style="color:white">입니다.<br>
+
+   {% if windpower >= 10 %}
+   <span style="color:yellow">바람이 많이 </span>
+   {% else %}
+   <span style="color:yellow">바람이 적게 </span>
+   {% endif %}
+       <span style="color:white">불고.
+
+   {% if humidity <= 50 %}
+   <span style="color:yellow">습도가 낮습니다</span>
+   {% elif humidity > 50 %}
+   <span style="color:yellow">습도가 낮습니다</span>
+   {% endif %}
+   <br>안전수칙을 준수하는 하루 보내세요!
+    </div> <!부가 정보 표현 부분>
+
+   <div id="gauge1-wrapper">
+    <div id="gauge1"></div>
+  </div> <!1번 게이지>
+   <script>
+    var temperature = {{ temperature }};  // 파이썬에서 받아온 값
+    var normalized_temperature = Math.min((temperature + 40) / 80, 1.0);  // 0.0부터 1.0 사이의 값으로 정규화
+    var bar = new ProgressBar.SemiCircle(gauge1, {
+      strokeWidth: 10,
+      color: '#00FF00', //바깥 게이지 색
+      trailColor: '#e8d7c9', //안쪽 원 색
+      trailWidth: 7,
+      easing: 'easeInOut',
+      duration: 1400,
+      svgStyle: null,
+      text: {
+        value: '',
+        alignToBottom: false
+      },
+      from: { color: '#00FF00' },
+      to: { color: '#00FF00' },
+      step: (state, bar) => {
+        var value = Math.round(bar.value() * 500); //화면에 보여주는 값 조절
+
+        bar.path.setAttribute('stroke', state.color);
+      }
+    });
+
+    bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
+    bar.text.style.fontSize = '20px';
+
+    bar.animate(normalized_temperature);  // Number from 0.0 to 1.0 #게이지 조절 부분
+
+  </script>                  <!1번 게이지>
+   <div class="line1"></div>
+
+   <div id="gauge2-wrapper">
+    <div id="gauge2"></div>
+  </div> <!2번 게이지>
+   <script>
+   var humidity = {{ humidity }};  // 파이썬에서 받아온 값
+    var normalized_humidity = Math.min(humidity / 100, 1.0);  // 0.0부터 1.0 사이의 값으로 정규화
+    var bar = new ProgressBar.SemiCircle(gauge2, {
+      strokeWidth: 10,
+      color: '#0f60cb',
+      trailColor: '#e8d7c9',
+      trailWidth: 7,
+      easing: 'easeInOut',
+      duration: 1400,
+      svgStyle: null,
+      text: {
+        value: '',
+        alignToBottom: false
+      },
+      from: { color: '#0f60cb' },
+      to: { color: '#0f60cb' },
+      // Set default step function for all animate calls
+      step: (state, bar) => {
+        var value = Math.round(bar.value() * 500); //화면에 보여주는 값 조절
+
+        bar.path.setAttribute('stroke', state.color);
+      }
+    });
+
+    bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
+    bar.text.style.fontSize = '20px';
+
+    bar.animate(normalized_humidity);  // Number from 0.0 to 1.0 #게이지 조절 부분
+
+  </script>                  <!2번 게이지>
+   <div class="line2"></div>
+
+   <div id="gauge3-wrapper">
+    <div id="gauge3"></div>
+  </div> <!3번 게이지>
+   <script>
+    var windpower = {{ windpower }};  // 파이썬에서 받아온 값
+    var normalized_windpower = Math.min(windpower / 20, 1.0);  // 0.0부터 1.0 사이의 값으로 정규화
+    var bar = new ProgressBar.SemiCircle(gauge3, {
+      strokeWidth: 10,
+      color: '#92b8b1',
+      trailColor: '#e8d7c9',
+      trailWidth: 7,
+      easing: 'easeInOut',
+      duration: 1400,
+      svgStyle: null,
+      text: {
+        value: '',
+        alignToBottom: false
+      },
+      from: { color: '#92b8b1' },
+      to: { color: '#92b8b1' },
+      // Set default step function for all animate calls
+      step: (state, bar) => {
+        var value = Math.round(bar.value() * 500); //화면에 보여주는 값 조절
+
+        bar.path.setAttribute('stroke', state.color);
+      }
+    });
+
+    bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
+    bar.text.style.fontSize = '20px';
+
+    bar.animate(normalized_windpower);  // 파이썬에서 받아온 값으로 게이지 조절
+
+  </script>                  <!3번 게이지>
+   <div class="line"></div>
+
+</body>
+
+</html>

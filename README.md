@@ -5,11 +5,14 @@ Yolo모델을 사용하여 신속하게 발화 순간을 탐지하여 웹 페이
 ## 서비스 흐름도
 ![서비스흐름도](https://github.com/qqinjin/DataScience_Education/assets/99711238/a6ff0fef-a3fb-4908-b28a-c940c04b0580)
 
-## Yolov5x
-![yolo결과](https://github.com/qqinjin/DataScience_Education/assets/99711238/d92e3f5e-862a-4ce0-a441-7288095561cb)
+## Yolo 학습 결과
 |         | Yolov5x | Yolov7x | Yolov8x |
 |:-------:|:-------:|:-------:|:-------:|
 | mAP@0.5 |  0.832  |  0.823  |  0.831  |
+- 발화 요인인 불, 연기, 스파크 이미지 데이터는 약 4만. 레이블 수 약 12만 그리고 7 : 2 : 1로 데이터 셋 구성
+- GPU : RTX3060, VRAM : 12GB, Epochs : 300, Batch Size : 2
+- 학습 시간은 약 v5 : 11일, v7 : 10일, v8 : 9일 소요
+ 
 ## Cycle-GAN 아키텍처
 ![사이클갠아키텍쳐](https://github.com/qqinjin/DataScience_Education/assets/99711238/8e2a6163-1f9d-46b8-81a0-f7bfa3dac1b6)
 - 안개속 상황의 탐지을 위한 데이터 수집을 위해 Cycle-GAN 사용

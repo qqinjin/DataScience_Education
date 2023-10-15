@@ -21,6 +21,10 @@ Yolo모델을 사용하여 신속하게 발화 순간을 탐지하여 웹 페이
 ![웹원리](https://github.com/qqinjin/DataScience_Education/assets/99711238/c3b30cde-efd0-4230-b610-819fb3272b69)
 - 좌표기반의 날씨 정보를 API로 요청 후 화재 위험도 보조지표로 사용
 
+## 서비스 영상
+![영상](https://github.com/qqinjin/DataScience_Education/assets/99711238/a60ad306-61e8-4076-a5e7-7d8b311e4569)
+
+실시간으로 객체 탐지 후 챗봇 알림으로 경보 및 소화 기능을 사용하는 영상
 
 
 

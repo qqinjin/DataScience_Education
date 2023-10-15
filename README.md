@@ -7,7 +7,9 @@ Yolo모델을 사용하여 신속하게 발화 순간을 탐지하여 웹 페이
 
 ## Yolov5x
 ![yolo결과](https://github.com/qqinjin/DataScience_Education/assets/99711238/d92e3f5e-862a-4ce0-a441-7288095561cb)
-
+|         | Yolov5x | Yolov7x | Yolov8x |
+|:-------:|:-------:|:-------:|:-------:|
+| mAP@0.5 |  0.832  |  0.823  |  0.831  |
 ## Cycle-GAN 아키텍처
 ![사이클갠아키텍쳐](https://github.com/qqinjin/DataScience_Education/assets/99711238/8e2a6163-1f9d-46b8-81a0-f7bfa3dac1b6)
 - 안개속 상황의 탐지을 위한 데이터 수집을 위해 Cycle-GAN 사용
